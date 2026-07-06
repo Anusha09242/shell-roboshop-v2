@@ -1,6 +1,7 @@
 #!/bin/bash
 
 app_name=shipping
+MYSQL_HOST=mysql.anu90.shop
 source ./common.sh
 check_root
 

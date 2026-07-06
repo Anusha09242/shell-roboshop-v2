@@ -6,7 +6,6 @@ sudo chown -R ec2-user:ec2-user $LOGS_FOLDER
 sudo chmod -R 755 $LOGS_FOLDER
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 SCRPT_DIR=$(pwd)
-MYSQL_HOST=$app_name.anu90.shop
 
 USERID=$(id -u)
 R="\e[31m"
@@ -89,5 +88,12 @@ java_setup(){
     VALIDATE $? "Installing Maven"
     mvn clean package &>> $LOGS_FILE
     mv target/shipping-1.0.jar shipping.jar 
+    VALIDATE $? "Installing dependencies"
+}
+
+python_setup(){
+    dnf install python3 gcc python3-devel -y &>> $LOGS_FILE
+    VALIDATE $? "Installing Maven"
+    pip3 install -r requirements.txt &>> $LOGS_FILE
     VALIDATE $? "Installing dependencies"
 }
