@@ -22,7 +22,9 @@ VALIDATE $? "Removed Default conf"
 
 cp $SCRPT_DIR/nginx.conf /etc/nginx/nginx.conf
 VALIDATE $? "Copied roboshop nginx conf"
- 
+
+systemctl restart nginx 
 systemctl enable nginx &>> $LOGS_FILE
-app_restart
+VALIDATE $? "Enabled and Restarted nginx"
+
 print_total_time
