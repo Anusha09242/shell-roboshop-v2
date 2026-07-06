@@ -82,3 +82,11 @@ app_restart(){
     systemctl restart $app_name &>> $LOGS_FILE
     VALIDATE $? "$app_name Restarting"
 }
+
+java_setup(){
+    dnf install maven -y &>> $LOGS_FILE
+    VALIDATE $? "Installing Maven"
+    mvn clean package &>> $LOGS_FILE
+    mv target/shipping-1.0.jar shipping.jar 
+    VALIDATE $? "Installing dependencies"
+}
