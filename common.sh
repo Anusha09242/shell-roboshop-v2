@@ -79,6 +79,6 @@ systemd_setup(){
 }
 
 app_restart(){
-    systemctl restart app_name &>> $LOGS_FILE
+    systemctl restart $app_name &>> $LOGS_FILE
     VALIDATE $? "$app_name Restarting"
 }
