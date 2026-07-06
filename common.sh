@@ -6,6 +6,7 @@ sudo chown -R ec2-user:ec2-user $LOGS_FOLDER
 sudo chmod -R 755 $LOGS_FOLDER
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 SCRPT_DIR=$(pwd)
+MYSQL_HOST=$app_name.anu90.shop
 
 USERID=$(id -u)
 R="\e[31m"
